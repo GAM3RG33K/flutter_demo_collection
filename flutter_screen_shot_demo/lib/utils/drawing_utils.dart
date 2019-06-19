@@ -138,7 +138,11 @@ class DrawingUtils {
     var span = TextSpan(style: style, text: text);
 
     // get text painter to draw the text on the canvas
-    var textPainter = TextPainter(text: span);
+    var textPainter = TextPainter(
+        text: span,
+        textAlign: TextAlign.center,
+        textDirection: TextDirection.ltr);
+    textPainter.layout();
     return textPainter.width;
   }
 }

@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_share_plugin/flutter_share_plugin.dart';
 
 import 'drawing_utils.dart';
 import 'permission_manager.dart';
@@ -75,11 +75,17 @@ class GeneralUtils {
 
         //write byte data in the created file
         imgFile.writeAsBytes(pngBytes, mode: FileMode.write);
+        share("screenshot at : ${DateTime.now()}", filePath: fileName);
       });
     };
 
     //This will perform the above task only if the required permission is granted,
     // otherwise it will ask for permission
-    PermissionManager.performTaskWithPermission(AppPermission.Storage, task);
+    await PermissionManager.performTaskWithPermission(
+        AppPermission.Storage, task);
+  }
+
+  static void share(String textContent, {String filePath}) {
+    FlutterShare.share(textContent: textContent, fileUrl: filePath);
   }
 }

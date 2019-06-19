@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 /// This class will contain the utility methods to notify a user,
@@ -29,11 +28,7 @@ class NotificationHelper {
   ///   - [fontSize] : double : font size of the toast's text
   ///
   static showToast(message, isLongToast,
-      {gravity: ToastGravity.BOTTOM,
-      timeInSecIos: 1,
-      backgroundColor: Colors.black,
-      textColor: Colors.white,
-      fontSize: 16.0}) {
+      {gravity, timeInSecIos, backgroundColor, textColor, fontSize}) {
     //show a toast with given message and customizations
     Fluttertoast.showToast(
         msg: message,

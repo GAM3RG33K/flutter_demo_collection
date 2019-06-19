@@ -65,7 +65,9 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.display1,
             ),
             new RaisedButton(
-              onPressed: () => GeneralUtils.takeScreenShot(previewContainer),
+              onPressed: () async {
+                await GeneralUtils.takeScreenShot(previewContainer);
+              },
               child: const Text('Take a Screenshot'),
             ),
             new RaisedButton(

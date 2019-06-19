@@ -115,12 +115,22 @@ class PermissionManager {
 
       //we iterate on each permission if we need to do any specific operation once after the permission is
       // status changes.
+      int grantedCount = 0;
       permissions.forEach((group, status) async {
         //for e.g.
-        // if (status.value != PermissionStatus.granted.value) {
-        //   //Do something
-        // }
+        if (status.value == PermissionStatus.granted.value) {
+          //Do something
+          grantedCount++;
+        }
       });
+
+      if (grantedCount == permissionList.length) {
+        NotificationHelper.showToast("All permissions granted!", true);
+      } else {
+        NotificationHelper.showToast(
+            "Only $grantedCount are granted from ${permissionList.length}!",
+            true);
+      }
     } catch (ex) {
       print("exception while processing requested permissions: $ex");
     }
