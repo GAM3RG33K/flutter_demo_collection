@@ -1,6 +1,6 @@
-import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
+
 import 'package:flutter/rendering.dart';
 import 'package:flutter_share_plugin/flutter_share_plugin.dart';
 
@@ -34,7 +34,7 @@ class GeneralUtils {
   /// Requirement of this method is a Global key named [globalWidgetKey],
   ///  which is assigned to a single widget and is unique thorugh out the app
   ///
-  /// The screnshot file will be stored in the Download folder as of now. Which is
+  /// The screenshot file will be stored in the Download folder as of now. Which is
   ///  denoted by [AppDirectory.AppDownload] here.
   ///  We can change it to other directories as well, e.g. [AppDirectory.Screenshot]
   ///
@@ -42,7 +42,7 @@ class GeneralUtils {
   /// Note: Image quality of the screenshot is by default SD(Standard lossy quality).
   ///   No other quality tweaks are found yet.
   ///
-  static takeScreenShot(globalWidgetKey) async {
+  static takeScreenshot(globalWidgetKey) async {
     /// Create a task which runs after a second, so that no animations are running
     ///
     /// This is just temp. solution. If possible find a stable solution so that in screenshot
@@ -61,7 +61,7 @@ class GeneralUtils {
             await image.toByteData(format: ui.ImageByteFormat.png);
         Uint8List pngBytes = byteData.buffer.asUint8List();
 
-        //get timestamp to make sure that every screnshot file is unique
+        //get timestamp to make sure that every screenshot file is unique
         var timeStamp = DateTime.now().millisecondsSinceEpoch;
 
         //for test  use download folder
@@ -69,13 +69,10 @@ class GeneralUtils {
             await StorageHelper.getDirectory(AppDirectory.AppDownload);
         // final directory = await StorageHelper.getDirectory(AppDirectory.Screenshot);
 
-        //create screnshot file name uysnig timestamp value
-        String fileName = "$directory/screenshot_$timeStamp.png";
-        File imgFile = new File(fileName);
-
-        //write byte data in the created file
-        imgFile.writeAsBytes(pngBytes, mode: FileMode.write);
-        share("screenshot at : ${DateTime.now()}", filePath: fileName);
+        //create screenshot file name uysnig timestamp value
+        String fileName = "screenshot_$timeStamp.png";
+        share("screenshot at : ${DateTime.now()}",
+            fileName: fileName, bytes: pngBytes);
       });
     };
 
@@ -85,7 +82,8 @@ class GeneralUtils {
         AppPermission.Storage, task);
   }
 
-  static void share(String textContent, {String filePath}) {
-    FlutterShare.share(textContent: textContent, fileUrl: filePath);
+  static void share(String textContent, {String fileName, List<int> bytes}) {
+    FlutterShare.share(
+        textContent: textContent, fileName: fileName, bytes: bytes);
   }
 }
