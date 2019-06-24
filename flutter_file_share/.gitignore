@@ -8,7 +8,6 @@
 .buildlog/
 .history
 .svn/
-*.zip
 
 # IntelliJ related
 *.iml
@@ -27,7 +26,6 @@
 .pub-cache/
 .pub/
 /build/
-*.lock
 
 # Android related
 **/android/**/gradle-wrapper.jar
@@ -70,6 +68,3 @@
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
-
-/flutter_share_plugin/*
-flutter_share_plugin
