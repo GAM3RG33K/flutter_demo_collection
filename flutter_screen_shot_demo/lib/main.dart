@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             new RaisedButton(
               onPressed: () async {
-                await GeneralUtils.takeScreenShot(previewContainer);
+                await GeneralUtils.takeScreenshot(previewContainer);
               },
               child: const Text('Take a Screenshot'),
             ),

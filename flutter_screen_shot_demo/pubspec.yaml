@@ -25,9 +25,8 @@ dependencies:
   permission_handler: '^3.1.0'
   # for showing Toasts in Flutter
   fluttertoast: ^3.1.0
-  # for sharing files in flutter
-  flutter_share_plugin: 
-    path: ../flutter_share_plugin
+  #for sharing files and text
+  flutter_share_plugin: ^0.0.3
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

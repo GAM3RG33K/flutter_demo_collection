@@ -18,6 +18,8 @@ dependencies:
   fluttertoast: ^3.1.0
   #for selecting the files from storage
   file_picker: ^1.3.6
+  #for sharing files and text
+  flutter_share_plugin: ^0.0.3
 
 dev_dependencies:
   flutter_test:

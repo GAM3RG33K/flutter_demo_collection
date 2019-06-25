@@ -21,8 +21,8 @@ dependencies:
     sdk: flutter
   flutter_general_utils:
     path: ../flutter_general_utils
-  flutter_share_plugin:
-    path: ../flutter_share_plugin
+  #for sharing files and text
+  flutter_share_plugin: ^0.0.3
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
